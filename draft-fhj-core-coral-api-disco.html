@@ -9,7 +9,11 @@
 <meta content="Jaime Jiménez" name="author">
 <meta content="Klaus Hartke" name="author">
 <meta content="
-       This document describes ... 
+       A common problem when exchanging CoRAL   documents is
+aligning producing and consuming endpoints with regards to the vocabulary and
+the associated compression dictionary used.  This memo proposes a set of
+mechanisms to allow advertising, discovery and negotiation of such
+translation artifacts. 
     " name="description">
 <meta content="xml2rfc 3.2.1" name="generator">
 <meta content="CoAP, CoRAL, API, Discovery" name="keyword">
@@ -863,7 +867,11 @@ address div.right {
 <h1 id="title">CoRAL API Discovery</h1>
 <section id="section-abstract">
       <h2 id="abstract"><a href="#abstract" class="selfRef">Abstract</a></h2>
-<p id="section-abstract-1">This document describes ...<a href="#section-abstract-1" class="pilcrow">¶</a></p>
+<p id="section-abstract-1">A common problem when exchanging CoRAL <span>[<a href="#I-D.ietf-core-coral" class="xref">I-D.ietf-core-coral</a>]</span> documents is
+aligning producing and consuming endpoints with regards to the vocabulary and
+the associated compression dictionary used.  This memo proposes a set of
+mechanisms to allow advertising, discovery and negotiation of such
+translation artifacts.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
 </section>
 <section class="note rfcEditorRemove" id="section-note.1">
       <h2 id="name-discussion-venues">
@@ -920,32 +928,54 @@ address div.right {
         <a href="#" onclick="scroll(0,0)" class="toplink">▲</a><h2 id="name-table-of-contents">
 <a href="#name-table-of-contents" class="section-name selfRef">Table of Contents</a>
         </h2>
-<nav class="toc"><ul class="ulEmpty compact toc">
-<li class="ulEmpty compact toc" id="section-toc.1-1.1">
+<nav class="toc"><ul class="toc ulEmpty compact">
+<li class="toc ulEmpty compact" id="section-toc.1-1.1">
             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="xref">1</a>.  <a href="#name-introduction" class="xref">Introduction</a><a href="#section-toc.1-1.1.1" class="pilcrow">¶</a></p>
-<ul class="ulEmpty compact toc">
-<li class="ulEmpty compact toc" id="section-toc.1-1.1.2.1">
+<ul class="toc ulEmpty compact">
+<li class="toc ulEmpty compact" id="section-toc.1-1.1.2.1">
                 <p id="section-toc.1-1.1.2.1.1" class="keepWithNext"><a href="#section-1.1" class="xref">1.1</a>.  <a href="#name-requirements-language" class="xref">Requirements Language</a><a href="#section-toc.1-1.1.2.1.1" class="pilcrow">¶</a></p>
 </li>
             </ul>
 </li>
-          <li class="ulEmpty compact toc" id="section-toc.1-1.2">
-            <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="xref">2</a>.  <a href="#name-security-considerations" class="xref">Security Considerations</a><a href="#section-toc.1-1.2.1" class="pilcrow">¶</a></p>
+          <li class="toc ulEmpty compact" id="section-toc.1-1.2">
+            <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="xref">2</a>.  <a href="#name-the-full-picture" class="xref">The Full Picture</a><a href="#section-toc.1-1.2.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="ulEmpty compact toc" id="section-toc.1-1.3">
-            <p id="section-toc.1-1.3.1"><a href="#section-3" class="xref">3</a>.  <a href="#name-iana-considerations" class="xref">IANA Considerations</a><a href="#section-toc.1-1.3.1" class="pilcrow">¶</a></p>
+          <li class="toc ulEmpty compact" id="section-toc.1-1.3">
+            <p id="section-toc.1-1.3.1"><a href="#section-3" class="xref">3</a>.  <a href="#name-breakdown" class="xref">Breakdown</a><a href="#section-toc.1-1.3.1" class="pilcrow">¶</a></p>
+<ul class="toc ulEmpty compact">
+<li class="toc ulEmpty compact" id="section-toc.1-1.3.2.1">
+                <p id="section-toc.1-1.3.2.1.1"><a href="#section-3.1" class="xref">3.1</a>.  <a href="#name-adverstising" class="xref">Adverstising</a><a href="#section-toc.1-1.3.2.1.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="ulEmpty compact toc" id="section-toc.1-1.4">
-            <p id="section-toc.1-1.4.1"><a href="#section-4" class="xref">4</a>.  <a href="#name-normative-references" class="xref">Normative References</a><a href="#section-toc.1-1.4.1" class="pilcrow">¶</a></p>
+              <li class="toc ulEmpty compact" id="section-toc.1-1.3.2.2">
+                <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="xref">3.2</a>.  <a href="#name-discovery-and-retrieval" class="xref">Discovery and Retrieval</a><a href="#section-toc.1-1.3.2.2.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="ulEmpty compact toc" id="section-toc.1-1.5">
-            <p id="section-toc.1-1.5.1"><a href="#section-appendix.a" class="xref">Appendix A</a>.  <a href="#name-examples" class="xref">Examples</a><a href="#section-toc.1-1.5.1" class="pilcrow">¶</a></p>
+              <li class="toc ulEmpty compact" id="section-toc.1-1.3.2.3">
+                <p id="section-toc.1-1.3.2.3.1"><a href="#section-3.3" class="xref">3.3</a>.  <a href="#name-negotiation" class="xref">Negotiation</a><a href="#section-toc.1-1.3.2.3.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="ulEmpty compact toc" id="section-toc.1-1.6">
-            <p id="section-toc.1-1.6.1"><a href="#section-appendix.b" class="xref"></a><a href="#name-acknowledgments" class="xref">Acknowledgments</a><a href="#section-toc.1-1.6.1" class="pilcrow">¶</a></p>
+            </ul>
 </li>
-          <li class="ulEmpty compact toc" id="section-toc.1-1.7">
-            <p id="section-toc.1-1.7.1"><a href="#section-appendix.c" class="xref"></a><a href="#name-authors-addresses" class="xref">Authors' Addresses</a><a href="#section-toc.1-1.7.1" class="pilcrow">¶</a></p>
+          <li class="toc ulEmpty compact" id="section-toc.1-1.4">
+            <p id="section-toc.1-1.4.1"><a href="#section-4" class="xref">4</a>.  <a href="#name-security-considerations" class="xref">Security Considerations</a><a href="#section-toc.1-1.4.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="toc ulEmpty compact" id="section-toc.1-1.5">
+            <p id="section-toc.1-1.5.1"><a href="#section-5" class="xref">5</a>.  <a href="#name-iana-considerations" class="xref">IANA Considerations</a><a href="#section-toc.1-1.5.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="toc ulEmpty compact" id="section-toc.1-1.6">
+            <p id="section-toc.1-1.6.1"><a href="#section-6" class="xref">6</a>.  <a href="#name-references" class="xref">References</a><a href="#section-toc.1-1.6.1" class="pilcrow">¶</a></p>
+<ul class="toc ulEmpty compact">
+<li class="toc ulEmpty compact" id="section-toc.1-1.6.2.1">
+                <p id="section-toc.1-1.6.2.1.1"><a href="#section-6.1" class="xref">6.1</a>.  <a href="#name-normative-references" class="xref">Normative References</a><a href="#section-toc.1-1.6.2.1.1" class="pilcrow">¶</a></p>
+</li>
+              <li class="toc ulEmpty compact" id="section-toc.1-1.6.2.2">
+                <p id="section-toc.1-1.6.2.2.1"><a href="#section-6.2" class="xref">6.2</a>.  <a href="#name-informative-references" class="xref">Informative References</a><a href="#section-toc.1-1.6.2.2.1" class="pilcrow">¶</a></p>
+</li>
+            </ul>
+</li>
+          <li class="toc ulEmpty compact" id="section-toc.1-1.7">
+            <p id="section-toc.1-1.7.1"><a href="#section-appendix.a" class="xref"></a><a href="#name-acknowledgments" class="xref">Acknowledgments</a><a href="#section-toc.1-1.7.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="toc ulEmpty compact" id="section-toc.1-1.8">
+            <p id="section-toc.1-1.8.1"><a href="#section-appendix.b" class="xref"></a><a href="#name-authors-addresses" class="xref">Authors' Addresses</a><a href="#section-toc.1-1.8.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 </nav>
@@ -956,7 +986,25 @@ address div.right {
       <h2 id="name-introduction">
 <a href="#section-1" class="section-number selfRef">1. </a><a href="#name-introduction" class="section-name selfRef">Introduction</a>
       </h2>
-<p id="section-1-1">CoRAL <span>[<a href="#I-D.ietf-core-coral" class="xref">I-D.ietf-core-coral</a>]</span> ...<a href="#section-1-1" class="pilcrow">¶</a></p>
+<p id="section-1-1">A common problem when exchanging CoRAL <span>[<a href="#I-D.ietf-core-coral" class="xref">I-D.ietf-core-coral</a>]</span> documents is
+aligning the producing and consuming endpoints with regards to the vocabulary
+and the associated compression dictionary used both in abstract and on the
+wire.<a href="#section-1-1" class="pilcrow">¶</a></p>
+<p id="section-1-2">For example, entities that consume CoRE problem details
+<span>[<a href="#I-D.ietf-core-problem-details" class="xref">I-D.ietf-core-problem-details</a>]</span> will typically need to understand the
+semantic associated with the compressed elements (in particular, the problem
+type code) in order to make sense of the received document.<a href="#section-1-2" class="pilcrow">¶</a></p>
+<p id="section-1-3">This memo proposes data formats and protocol interactions that allow:<a href="#section-1-3" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-1-4.1">Producing endpoints to advertise a vocabulary used when
+interacting with a certain resource (<a href="#sec-advert" class="xref">Section 3.1</a>);<a href="#section-1-4.1" class="pilcrow">¶</a>
+</li>
+        <li class="normal" id="section-1-4.2">Consuming endpoints to discover the above (<a href="#sec-disco" class="xref">Section 3.2</a>);<a href="#section-1-4.2" class="pilcrow">¶</a>
+</li>
+        <li class="normal" id="section-1-4.3">Producers and consumers to negotiate its use in the context of a certain
+interaction (<a href="#sec-nego" class="xref">Section 3.3</a>).<a href="#section-1-4.3" class="pilcrow">¶</a>
+</li>
+      </ul>
 <div id="requirements-language">
 <section id="section-1.1">
         <h3 id="name-requirements-language">
@@ -971,69 +1019,209 @@ appear in all capitals, as shown here.<a href="#section-1.1-1" class="pilcrow">�
 </div>
 </section>
 </div>
-<div id="security-considerations">
+<div id="the-full-picture">
 <section id="section-2">
-      <h2 id="name-security-considerations">
-<a href="#section-2" class="section-number selfRef">2. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
+      <h2 id="name-the-full-picture">
+<a href="#section-2" class="section-number selfRef">2. </a><a href="#name-the-full-picture" class="section-name selfRef">The Full Picture</a>
       </h2>
-<p id="section-2-1">TODO<a href="#section-2-1" class="pilcrow">¶</a></p>
-</section>
-</div>
-<div id="iana-considerations">
-<section id="section-3">
-      <h2 id="name-iana-considerations">
-<a href="#section-3" class="section-number selfRef">3. </a><a href="#name-iana-considerations" class="section-name selfRef">IANA Considerations</a>
-    </h2>
-</section>
-</div>
-<section id="section-4">
-      <h2 id="name-normative-references">
-<a href="#section-4" class="section-number selfRef">4. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
-      </h2>
-<dl class="references">
-<dt id="I-D.ietf-core-coral">[I-D.ietf-core-coral]</dt>
-      <dd>
-<span class="refAuthor">Hartke, K.</span>, <span class="refTitle">"The Constrained RESTful Application Language (CoRAL)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-core-coral-03</span>, <time datetime="2020-03-09" class="refDate">9 March 2020</time>, <span>&lt;<a href="http://www.ietf.org/internet-drafts/draft-ietf-core-coral-03.txt">http://www.ietf.org/internet-drafts/draft-ietf-core-coral-03.txt</a>&gt;</span>. </dd>
-<dd class="break"></dd>
-<dt id="RFC2119">[RFC2119]</dt>
-      <dd>
-<span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03" class="refDate">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2119">https://www.rfc-editor.org/info/rfc2119</a>&gt;</span>. </dd>
-<dd class="break"></dd>
-<dt id="RFC8174">[RFC8174]</dt>
-    <dd>
-<span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05" class="refDate">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8174">https://www.rfc-editor.org/info/rfc8174</a>&gt;</span>. </dd>
-<dd class="break"></dd>
-</dl>
-</section>
-<div id="sec-examples">
-<section id="section-appendix.a">
-      <h2 id="name-examples">
-<a href="#section-appendix.a" class="section-number selfRef">Appendix A. </a><a href="#name-examples" class="section-name selfRef">Examples</a>
-      </h2>
-<p id="section-appendix.a-1">This section presents a series of examples ...<a href="#section-appendix.a-1" class="pilcrow">¶</a></p>
-<span id="name-todo"></span><div id="fig-todo">
+<span id="name-full-picture"></span><div id="fig-full-picture">
 <figure id="figure-1">
-        <div class="artwork art-text alignLeft" id="section-appendix.a-2.1">
+        <div class="artwork art-text alignLeft" id="section-2-1.1">
 <pre>
-TODO
+Client                          Server          Server/Dict
+                                                https://googley.eye/api-dict
+ |                               |                    |
+ | -(1) GET /.well-known/core -&gt; |                    |
+ |                               |                    |
+ | &lt;-- 2.05 /config + api-ep --- |                    |
+ |                                                    |
+ | --------------(2) GET /api-dict -----------------&gt; |
+ |                                                    |
+ | &lt;------------ gets back cbor-mappings ------------ |
+ |                                                    |
+ | --(3) POST /config ---------&gt; |                    |
+ |                               |                    |
+ | &lt;-- 2.04 Changed ------------ |                    |
+                               [...]
+ | --(n) GET /config ----------&gt; |                    |
+ |                               |                    |
+ | &lt;-- 2.05 Content ------------ |                    |
 </pre>
 </div>
 <figcaption><a href="#figure-1" class="selfRef">Figure 1</a>:
-<a href="#name-todo" class="selfRef">TODO</a>
+<a href="#name-full-picture" class="selfRef">Full Picture</a>
         </figcaption></figure>
 </div>
 </section>
 </div>
+<div id="breakdown">
+<section id="section-3">
+      <h2 id="name-breakdown">
+<a href="#section-3" class="section-number selfRef">3. </a><a href="#name-breakdown" class="section-name selfRef">Breakdown</a>
+      </h2>
+<div id="sec-advert">
+<section id="section-3.1">
+        <h3 id="name-adverstising">
+<a href="#section-3.1" class="section-number selfRef">3.1. </a><a href="#name-adverstising" class="section-name selfRef">Adverstising</a>
+        </h3>
+<span id="name-advertising"></span><div id="fig-advert">
+<figure id="figure-2">
+          <div class="artwork art-text alignLeft" id="section-3.1-1.1">
+<pre>
+   Link rel=hosts rt=temperature href=/temp1 {
+      Link rel=vocab href=/api-dict
+</pre>
+</div>
+<figcaption><a href="#figure-2" class="selfRef">Figure 2</a>:
+<a href="#name-advertising" class="selfRef">Advertising</a>
+          </figcaption></figure>
+</div>
+</section>
+</div>
+<div id="sec-disco">
+<section id="section-3.2">
+        <h3 id="name-discovery-and-retrieval">
+<a href="#section-3.2" class="section-number selfRef">3.2. </a><a href="#name-discovery-and-retrieval" class="section-name selfRef">Discovery and Retrieval</a>
+        </h3>
+<span id="name-vocabulary-discovery"></span><div id="fig-disco-vocabs">
+<figure id="figure-3">
+          <div class="artwork art-text alignLeft" id="section-3.2-1.1">
+<pre>
+GET /.well-known/core
+
+   2.05 Content
+
+   Link rel=hosts rt=temperature href=/temp1 {
+      Link rel=vocab href=/api-dict
+   }
+   Link rel=hosts rt=temperature href=/temp2 {
+      Link rel=vocab href=/api-dict
+   }
+   Link rel=hosts rt=humidity href=/hum {
+      Link rel=vocab href=/api-dict
+   }
+   Link rel=hosts rt=configuration href=/config {
+      Link rel=vocab href=https://googley.eye/api-dict
+   }
+</pre>
+</div>
+<figcaption><a href="#figure-3" class="selfRef">Figure 3</a>:
+<a href="#name-vocabulary-discovery" class="selfRef">Vocabulary Discovery</a>
+          </figcaption></figure>
+</div>
+<span id="name-vocabulary-retrieval"></span><div id="fig-disco-vocab">
+<figure id="figure-4">
+          <div class="artwork art-text alignLeft" id="section-3.2-2.1">
+<pre>
+GET /api-dict
+
+2.05 Content
+ETag: 12345
+
+| Count | Namespace                  |
+|:-----:|:-------------------------- |
+|  100  | "ACE group management"     |
+</pre>
+</div>
+<figcaption><a href="#figure-4" class="selfRef">Figure 4</a>:
+<a href="#name-vocabulary-retrieval" class="selfRef">Vocabulary Retrieval</a>
+          </figcaption></figure>
+</div>
+</section>
+</div>
+<div id="sec-nego">
+<section id="section-3.3">
+        <h3 id="name-negotiation">
+<a href="#section-3.3" class="section-number selfRef">3.3. </a><a href="#name-negotiation" class="section-name selfRef">Negotiation</a>
+        </h3>
+<span id="name-negotiation-2"></span><div id="fig-nego">
+<figure id="figure-5">
+          <div class="artwork art-text alignLeft" id="section-3.3-1.1">
+<pre>
+POST /config
+Link rel=vocab href=/api-dict etag=12345
+
+Setting key=@72 value=false
+Setting key=@73 value=15
+Setting key=@74 value=@75
+
+2.04 Changed
+</pre>
+</div>
+<figcaption><a href="#figure-5" class="selfRef">Figure 5</a>:
+<a href="#name-negotiation-2" class="selfRef">Negotiation</a>
+          </figcaption></figure>
+</div>
+</section>
+</div>
+</section>
+</div>
+<div id="security-considerations">
+<section id="section-4">
+      <h2 id="name-security-considerations">
+<a href="#section-4" class="section-number selfRef">4. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
+      </h2>
+<p id="section-4-1">TODO elaborate on the following:<a href="#section-4-1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-4-2.1">https://owasp.org/www-community/vulnerabilities/XML_External_Entity_(XXE)_Processing<a href="#section-4-2.1" class="pilcrow">¶</a>
+</li>
+        <li class="normal" id="section-4-2.2">https://cwe.mitre.org/data/definitions/827.html<a href="#section-4-2.2" class="pilcrow">¶</a>
+</li>
+      </ul>
+</section>
+</div>
+<div id="iana-considerations">
+<section id="section-5">
+      <h2 id="name-iana-considerations">
+<a href="#section-5" class="section-number selfRef">5. </a><a href="#name-iana-considerations" class="section-name selfRef">IANA Considerations</a>
+    </h2>
+</section>
+</div>
+<section id="section-6">
+      <h2 id="name-references">
+<a href="#section-6" class="section-number selfRef">6. </a><a href="#name-references" class="section-name selfRef">References</a>
+      </h2>
+<section id="section-6.1">
+        <h3 id="name-normative-references">
+<a href="#section-6.1" class="section-number selfRef">6.1. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
+        </h3>
+<dl class="references">
+<dt id="I-D.ietf-core-coral">[I-D.ietf-core-coral]</dt>
+        <dd>
+<span class="refAuthor">Hartke, K.</span>, <span class="refTitle">"The Constrained RESTful Application Language (CoRAL)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-core-coral-03</span>, <time datetime="2020-03-09" class="refDate">9 March 2020</time>, <span>&lt;<a href="http://www.ietf.org/internet-drafts/draft-ietf-core-coral-03.txt">http://www.ietf.org/internet-drafts/draft-ietf-core-coral-03.txt</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC2119">[RFC2119]</dt>
+        <dd>
+<span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03" class="refDate">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2119">https://www.rfc-editor.org/info/rfc2119</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC8174">[RFC8174]</dt>
+      <dd>
+<span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05" class="refDate">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8174">https://www.rfc-editor.org/info/rfc8174</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+</dl>
+</section>
+<section id="section-6.2">
+        <h3 id="name-informative-references">
+<a href="#section-6.2" class="section-number selfRef">6.2. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
+        </h3>
+<dl class="references">
+<dt id="I-D.ietf-core-problem-details">[I-D.ietf-core-problem-details]</dt>
+      <dd>
+<span class="refAuthor">Fossati, T.</span><span class="refAuthor">, Jimenez, J.</span><span class="refAuthor">, and K. Hartke</span>, <span class="refTitle">"Problem Details For CoAP APIs"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-core-problem-details-01</span>, <time datetime="2020-07-13" class="refDate">13 July 2020</time>, <span>&lt;<a href="http://www.ietf.org/internet-drafts/draft-ietf-core-problem-details-01.txt">http://www.ietf.org/internet-drafts/draft-ietf-core-problem-details-01.txt</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+</dl>
+</section>
+</section>
 <div id="acknowledgments">
-<section id="section-appendix.b">
+<section id="section-appendix.a">
       <h2 id="name-acknowledgments">
 <a href="#name-acknowledgments" class="section-name selfRef">Acknowledgments</a>
       </h2>
-<p id="section-appendix.b-1">For sure<a href="#section-appendix.b-1" class="pilcrow">¶</a></p>
+<p id="section-appendix.a-1">TODO<a href="#section-appendix.a-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="authors-addresses">
-<section id="section-appendix.c">
+<section id="section-appendix.b">
       <h2 id="name-authors-addresses">
 <a href="#name-authors-addresses" class="section-name selfRef">Authors' Addresses</a>
       </h2>

@@ -15,7 +15,11 @@ Expires: 30 April 2021                                         K. Hartke
 
 Abstract
 
-   This document describes ...
+   A common problem when exchanging CoRAL [I-D.ietf-core-coral]
+   documents is aligning producing and consuming endpoints with regards
+   to the vocabulary and the associated compression dictionary used.
+   This memo proposes a set of mechanisms to allow advertising,
+   discovery and negotiation of such translation artifacts.
 
 Discussion Venues
 
@@ -46,10 +50,6 @@ Copyright Notice
    Copyright (c) 2020 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
-   This document is subject to BCP 78 and the IETF Trust's Legal
-   Provisions Relating to IETF Documents (https://trustee.ietf.org/
-   license-info) in effect on the date of publication of this document.
-   Please review these documents carefully, as they describe your rights
 
 
 
@@ -58,6 +58,10 @@ Fossati, et al.           Expires 30 April 2021                 [Page 1]
 Internet-Draft               CoRAL API Disco                October 2020
 
 
+   This document is subject to BCP 78 and the IETF Trust's Legal
+   Provisions Relating to IETF Documents (https://trustee.ietf.org/
+   license-info) in effect on the date of publication of this document.
+   Please review these documents carefully, as they describe your rights
    and restrictions with respect to this document.  Code Components
    extracted from this document must include Simplified BSD License text
    as described in Section 4.e of the Trust Legal Provisions and are
@@ -66,17 +70,49 @@ Internet-Draft               CoRAL API Disco                October 2020
 Table of Contents
 
    1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
-     1.1.  Requirements Language . . . . . . . . . . . . . . . . . .   2
-   2.  Security Considerations . . . . . . . . . . . . . . . . . . .   2
-   3.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   2
-   4.  Normative References  . . . . . . . . . . . . . . . . . . . .   2
-   Appendix A.  Examples . . . . . . . . . . . . . . . . . . . . . .   3
-   Acknowledgments . . . . . . . . . . . . . . . . . . . . . . . . .   3
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .   3
+     1.1.  Requirements Language . . . . . . . . . . . . . . . . . .   3
+   2.  The Full Picture  . . . . . . . . . . . . . . . . . . . . . .   3
+   3.  Breakdown . . . . . . . . . . . . . . . . . . . . . . . . . .   3
+     3.1.  Adverstising  . . . . . . . . . . . . . . . . . . . . . .   3
+     3.2.  Discovery and Retrieval . . . . . . . . . . . . . . . . .   3
+     3.3.  Negotiation . . . . . . . . . . . . . . . . . . . . . . .   4
+   4.  Security Considerations . . . . . . . . . . . . . . . . . . .   4
+   5.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   5
+   6.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   5
+     6.1.  Normative References  . . . . . . . . . . . . . . . . . .   5
+     6.2.  Informative References  . . . . . . . . . . . . . . . . .   5
+   Acknowledgments . . . . . . . . . . . . . . . . . . . . . . . . .   5
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .   5
 
 1.  Introduction
 
-   CoRAL [I-D.ietf-core-coral] ...
+   A common problem when exchanging CoRAL [I-D.ietf-core-coral]
+   documents is aligning the producing and consuming endpoints with
+   regards to the vocabulary and the associated compression dictionary
+   used both in abstract and on the wire.
+
+   For example, entities that consume CoRE problem details
+   [I-D.ietf-core-problem-details] will typically need to understand the
+   semantic associated with the compressed elements (in particular, the
+   problem type code) in order to make sense of the received document.
+
+   This memo proposes data formats and protocol interactions that allow:
+
+   *  Producing endpoints to advertise a vocabulary used when
+      interacting with a certain resource (Section 3.1);
+
+   *  Consuming endpoints to discover the above (Section 3.2);
+
+   *  Producers and consumers to negotiate its use in the context of a
+      certain interaction (Section 3.3).
+
+
+
+
+Fossati, et al.           Expires 30 April 2021                 [Page 2]
+
+Internet-Draft               CoRAL API Disco                October 2020
+
 
 1.1.  Requirements Language
 
@@ -86,13 +122,120 @@ Table of Contents
    BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all
    capitals, as shown here.
 
-2.  Security Considerations
+2.  The Full Picture
 
-   TODO
+Client                          Server          Server/Dict
+                                                https://googley.eye/api-dict
+ |                               |                    |
+ | -(1) GET /.well-known/core -> |                    |
+ |                               |                    |
+ | <-- 2.05 /config + api-ep --- |                    |
+ |                                                    |
+ | --------------(2) GET /api-dict -----------------> |
+ |                                                    |
+ | <------------ gets back cbor-mappings ------------ |
+ |                                                    |
+ | --(3) POST /config ---------> |                    |
+ |                               |                    |
+ | <-- 2.04 Changed ------------ |                    |
+                               [...]
+ | --(n) GET /config ----------> |                    |
+ |                               |                    |
+ | <-- 2.05 Content ------------ |                    |
 
-3.  IANA Considerations
+                        Figure 1: Full Picture
 
-4.  Normative References
+3.  Breakdown
+
+3.1.  Adverstising
+
+      Link rel=hosts rt=temperature href=/temp1 {
+         Link rel=vocab href=/api-dict
+
+                           Figure 2: Advertising
+
+3.2.  Discovery and Retrieval
+
+
+
+
+
+
+
+
+
+
+Fossati, et al.           Expires 30 April 2021                 [Page 3]
+
+Internet-Draft               CoRAL API Disco                October 2020
+
+
+   GET /.well-known/core
+
+      2.05 Content
+
+      Link rel=hosts rt=temperature href=/temp1 {
+         Link rel=vocab href=/api-dict
+      }
+      Link rel=hosts rt=temperature href=/temp2 {
+         Link rel=vocab href=/api-dict
+      }
+      Link rel=hosts rt=humidity href=/hum {
+         Link rel=vocab href=/api-dict
+      }
+      Link rel=hosts rt=configuration href=/config {
+         Link rel=vocab href=https://googley.eye/api-dict
+      }
+
+                       Figure 3: Vocabulary Discovery
+
+   GET /api-dict
+
+   2.05 Content
+   ETag: 12345
+
+   | Count | Namespace                  |
+   |:-----:|:-------------------------- |
+   |  100  | "ACE group management"     |
+
+                       Figure 4: Vocabulary Retrieval
+
+3.3.  Negotiation
+
+   POST /config
+   Link rel=vocab href=/api-dict etag=12345
+
+   Setting key=@72 value=false
+   Setting key=@73 value=15
+   Setting key=@74 value=@75
+
+   2.04 Changed
+
+                           Figure 5: Negotiation
+
+4.  Security Considerations
+
+   TODO elaborate on the following:
+
+
+
+
+
+Fossati, et al.           Expires 30 April 2021                 [Page 4]
+
+Internet-Draft               CoRAL API Disco                October 2020
+
+
+   *  https://owasp.org/www-community/vulnerabilities/
+      XML_External_Entity_(XXE)_Processing
+
+   *  https://cwe.mitre.org/data/definitions/827.html
+
+5.  IANA Considerations
+
+6.  References
+
+6.1.  Normative References
 
    [I-D.ietf-core-coral]
               Hartke, K., "The Constrained RESTful Application Language
@@ -105,30 +248,22 @@ Table of Contents
               DOI 10.17487/RFC2119, March 1997,
               <https://www.rfc-editor.org/info/rfc2119>.
 
-
-
-
-
-Fossati, et al.           Expires 30 April 2021                 [Page 2]
-
-Internet-Draft               CoRAL API Disco                October 2020
-
-
    [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
               May 2017, <https://www.rfc-editor.org/info/rfc8174>.
 
-Appendix A.  Examples
+6.2.  Informative References
 
-   This section presents a series of examples ...
-
-   TODO
-
-                               Figure 1: TODO
+   [I-D.ietf-core-problem-details]
+              Fossati, T., Jimenez, J., and K. Hartke, "Problem Details
+              For CoAP APIs", Work in Progress, Internet-Draft, draft-
+              ietf-core-problem-details-01, 13 July 2020,
+              <http://www.ietf.org/internet-drafts/draft-ietf-core-
+              problem-details-01.txt>.
 
 Acknowledgments
 
-   For sure
+   TODO
 
 Authors' Addresses
 
@@ -136,6 +271,15 @@ Authors' Addresses
    arm
 
    Email: thomas.fossati@arm.com
+
+
+
+
+
+
+Fossati, et al.           Expires 30 April 2021                 [Page 5]
+
+Internet-Draft               CoRAL API Disco                October 2020
 
 
    Jaime Jiménez
@@ -165,4 +309,28 @@ Authors' Addresses
 
 
 
-Fossati, et al.           Expires 30 April 2021                 [Page 3]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Fossati, et al.           Expires 30 April 2021                 [Page 6]
