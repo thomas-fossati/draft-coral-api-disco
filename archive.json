@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2020-10-29T00:52:23.007151+00:00",
+  "timestamp": "2020-11-01T00:32:57.672524+00:00",
   "repo": "thomas-fossati/draft-coral-api-disco",
   "labels": [
     {
@@ -50,5 +50,34 @@
     }
   ],
   "issues": [],
-  "pulls": []
+  "pulls": [
+    {
+      "number": 1,
+      "id": "MDExOlB1bGxSZXF1ZXN0NTEyODM5MzI5",
+      "title": "Slides for interim",
+      "url": "https://github.com/thomas-fossati/draft-coral-api-disco/pull/1",
+      "state": "MERGED",
+      "author": "jaimejim",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "First version of the slides.",
+      "createdAt": "2020-10-30T08:30:58Z",
+      "updatedAt": "2020-10-30T12:13:39Z",
+      "baseRepository": "thomas-fossati/draft-coral-api-disco",
+      "baseRefName": "main",
+      "baseRefOid": "6d2801079f9d7e9694578c1faebb3e478a9ba5a5",
+      "headRepository": "jaimejim/draft-coral-api-disco",
+      "headRefName": "jaime-slides",
+      "headRefOid": "9cedad3f167b006652e5b6f43344a9d736744c59",
+      "closedAt": "2020-10-30T12:13:39Z",
+      "mergedAt": "2020-10-30T12:13:39Z",
+      "mergedBy": "thomas-fossati",
+      "mergeCommit": {
+        "oid": "154271313643ff68be3033ff239420a4ab7b00fa"
+      },
+      "comments": [],
+      "reviews": []
+    }
+  ]
 }
