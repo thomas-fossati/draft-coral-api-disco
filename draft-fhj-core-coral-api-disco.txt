@@ -5,9 +5,9 @@
 CoRE Working Group                                            T. Fossati
 Internet-Draft                                                       arm
 Intended status: Standards Track                              J. Jiménez
-Expires: 3 May 2021                                            K. Hartke
+Expires: 7 May 2021                                            K. Hartke
                                                                 Ericsson
-                                                         30 October 2020
+                                                         3 November 2020
 
 
                           CoRAL API Discovery
@@ -43,7 +43,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 3 May 2021.
+   This Internet-Draft will expire on 7 May 2021.
 
 Copyright Notice
 
@@ -53,9 +53,9 @@ Copyright Notice
 
 
 
-Fossati, et al.            Expires 3 May 2021                   [Page 1]
+Fossati, et al.            Expires 7 May 2021                   [Page 1]
 
-Internet-Draft               CoRAL API Disco                October 2020
+Internet-Draft               CoRAL API Disco               November 2020
 
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Fossati, et al.            Expires 3 May 2021                   [Page 2]
+Fossati, et al.            Expires 7 May 2021                   [Page 2]
 
-Internet-Draft               CoRAL API Disco                October 2020
+Internet-Draft               CoRAL API Disco               November 2020
 
 
 1.1.  Requirements Language
@@ -165,9 +165,9 @@ Client                          Server          Server/Dict
 
 
 
-Fossati, et al.            Expires 3 May 2021                   [Page 3]
+Fossati, et al.            Expires 7 May 2021                   [Page 3]
 
-Internet-Draft               CoRAL API Disco                October 2020
+Internet-Draft               CoRAL API Disco               November 2020
 
 
    GET /.well-known/core
@@ -221,9 +221,9 @@ Internet-Draft               CoRAL API Disco                October 2020
 
 
 
-Fossati, et al.            Expires 3 May 2021                   [Page 4]
+Fossati, et al.            Expires 7 May 2021                   [Page 4]
 
-Internet-Draft               CoRAL API Disco                October 2020
+Internet-Draft               CoRAL API Disco               November 2020
 
 
    *  https://owasp.org/www-community/vulnerabilities/
@@ -277,9 +277,9 @@ Authors' Addresses
 
 
 
-Fossati, et al.            Expires 3 May 2021                   [Page 5]
+Fossati, et al.            Expires 7 May 2021                   [Page 5]
 
-Internet-Draft               CoRAL API Disco                October 2020
+Internet-Draft               CoRAL API Disco               November 2020
 
 
    Jaime Jiménez
@@ -333,4 +333,4 @@ Internet-Draft               CoRAL API Disco                October 2020
 
 
 
-Fossati, et al.            Expires 3 May 2021                   [Page 6]
+Fossati, et al.            Expires 7 May 2021                   [Page 6]
