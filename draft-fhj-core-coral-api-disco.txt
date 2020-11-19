@@ -5,9 +5,9 @@
 CoRE Working Group                                            T. Fossati
 Internet-Draft                                                       arm
 Intended status: Standards Track                              J. Jiménez
-Expires: 7 May 2021                                            K. Hartke
+Expires: 23 May 2021                                           K. Hartke
                                                                 Ericsson
-                                                         3 November 2020
+                                                        19 November 2020
 
 
                           CoRAL API Discovery
@@ -43,20 +43,12 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 7 May 2021.
+   This Internet-Draft will expire on 23 May 2021.
 
 Copyright Notice
 
    Copyright (c) 2020 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
-
-
-
-
-Fossati, et al.            Expires 7 May 2021                   [Page 1]
-
-Internet-Draft               CoRAL API Disco               November 2020
-
 
    This document is subject to BCP 78 and the IETF Trust's Legal
    Provisions Relating to IETF Documents (https://trustee.ietf.org/
@@ -69,20 +61,20 @@ Internet-Draft               CoRAL API Disco               November 2020
 
 Table of Contents
 
-   1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
-     1.1.  Requirements Language . . . . . . . . . . . . . . . . . .   3
-   2.  The Full Picture  . . . . . . . . . . . . . . . . . . . . . .   3
-   3.  Breakdown . . . . . . . . . . . . . . . . . . . . . . . . . .   3
-     3.1.  Adverstising  . . . . . . . . . . . . . . . . . . . . . .   3
-     3.2.  Discovery and Retrieval . . . . . . . . . . . . . . . . .   3
-     3.3.  Negotiation . . . . . . . . . . . . . . . . . . . . . . .   4
-   4.  Security Considerations . . . . . . . . . . . . . . . . . . .   4
-   5.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   5
-   6.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   5
-     6.1.  Normative References  . . . . . . . . . . . . . . . . . .   5
-     6.2.  Informative References  . . . . . . . . . . . . . . . . .   5
-   Acknowledgments . . . . . . . . . . . . . . . . . . . . . . . . .   5
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .   5
+   1.  Introduction
+     1.1.  Requirements Language
+   2.  The Full Picture
+   3.  Breakdown
+     3.1.  Adverstising
+     3.2.  Discovery and Retrieval
+     3.3.  Negotiation
+   4.  Security Considerations
+   5.  IANA Considerations
+   6.  References
+     6.1.  Normative References
+     6.2.  Informative References
+   Acknowledgments
+   Authors' Addresses
 
 1.  Introduction
 
@@ -105,14 +97,6 @@ Table of Contents
 
    *  Producers and consumers to negotiate its use in the context of a
       certain interaction (Section 3.3).
-
-
-
-
-Fossati, et al.            Expires 7 May 2021                   [Page 2]
-
-Internet-Draft               CoRAL API Disco               November 2020
-
 
 1.1.  Requirements Language
 
@@ -155,20 +139,6 @@ Client                          Server          Server/Dict
                            Figure 2: Advertising
 
 3.2.  Discovery and Retrieval
-
-
-
-
-
-
-
-
-
-
-Fossati, et al.            Expires 7 May 2021                   [Page 3]
-
-Internet-Draft               CoRAL API Disco               November 2020
-
 
    GET /.well-known/core
 
@@ -217,15 +187,6 @@ Internet-Draft               CoRAL API Disco               November 2020
 
    TODO elaborate on the following:
 
-
-
-
-
-Fossati, et al.            Expires 7 May 2021                   [Page 4]
-
-Internet-Draft               CoRAL API Disco               November 2020
-
-
    *  https://owasp.org/www-community/vulnerabilities/
       XML_External_Entity_(XXE)_Processing
 
@@ -273,15 +234,6 @@ Authors' Addresses
    Email: thomas.fossati@arm.com
 
 
-
-
-
-
-Fossati, et al.            Expires 7 May 2021                   [Page 5]
-
-Internet-Draft               CoRAL API Disco               November 2020
-
-
    Jaime Jiménez
    Ericsson
 
@@ -292,45 +244,3 @@ Internet-Draft               CoRAL API Disco               November 2020
    Ericsson
 
    Email: klaus.hartke@ericsson.com
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Fossati, et al.            Expires 7 May 2021                   [Page 6]
